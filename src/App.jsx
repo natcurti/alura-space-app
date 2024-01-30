@@ -1,7 +1,9 @@
 import { styled } from "styled-components";
 import GlobalStyle from "./components/GlobalStyles"
 import Header from "./components/Header";
-import Container from "./components/Container";
+import Banner from "./components/Banner";
+import AsideMenu from "./components/AsideMenu";
+import Gallery from "./components/Gallery";
 
 const BackgroundGradient = styled.div`
   background: linear-gradient(174.61deg, #041833 4.16%, #04244F 48%, #154580 96.76%);
@@ -9,13 +11,39 @@ const BackgroundGradient = styled.div`
   min-height: 100vh;
 `
 
+const AppContainer = styled.div`
+  width: 1200px;
+  margin: 0 auto;
+  max-width: 100%;
+`
+
+const MainContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+`
+
+const GalleryContent = styled.section`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`
+
 function App() {
   return (
     <>
       <BackgroundGradient>
         <GlobalStyle/>
-        <Header/>
-        <Container/>
+        <AppContainer>
+          <Header/>
+          <MainContainer>
+            <AsideMenu/>
+            <GalleryContent>
+              <Banner/>
+              <Gallery/>
+            </GalleryContent>
+          </MainContainer>
+        </AppContainer>       
       </BackgroundGradient>
     </>
   )

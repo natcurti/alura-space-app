@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const BannerStyled = styled.div`
     overflow: hidden;
-    width: 65rem;
+    width: 60rem;
     height: 20rem;
     border-radius: 1.25rem;
     position: relative;
