@@ -4,6 +4,9 @@ import Header from "./components/Header";
 import Banner from "./components/Banner";
 import AsideMenu from "./components/AsideMenu";
 import Gallery from "./components/Gallery";
+import pictures from "./pictures.json";
+import { useState } from "react";
+import Modal from "./components/Modal";
 
 const BackgroundGradient = styled.div`
   background: linear-gradient(174.61deg, #041833 4.16%, #04244F 48%, #154580 96.76%);
@@ -29,7 +32,10 @@ const GalleryContent = styled.section`
   flex-grow: 1;
 `
 
-function App() {
+const App = () => {
+
+  const [galleryPics, setGalleryPics] = useState(pictures);
+
   return (
     <>
       <BackgroundGradient>
@@ -40,10 +46,11 @@ function App() {
             <AsideMenu/>
             <GalleryContent>
               <Banner/>
-              <Gallery/>
+              <Gallery pictures = {galleryPics}/>
             </GalleryContent>
           </MainContainer>
-        </AppContainer>       
+        </AppContainer>
+        <Modal/>       
       </BackgroundGradient>
     </>
   )

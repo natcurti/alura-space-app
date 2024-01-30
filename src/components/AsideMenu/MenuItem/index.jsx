@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 const MenuItemStyled = styled.li`
    font-size: 24px;
    line-height: 29px;
