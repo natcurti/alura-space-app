@@ -53,13 +53,14 @@ const App = () => {
 
   useEffect(() => {
     const input = searchField.toUpperCase();
-    const newArrayOfPics = galleryPics.filter((item) => (item.title.toUpperCase()).startsWith(input));
+    const newArrayOfPics = pictures.filter((item) => (item.title.toUpperCase()).startsWith(input));
     searchField.length >= 1 && newArrayOfPics ? setGalleryPics(newArrayOfPics) : setGalleryPics(pictures);
   }, [searchField])
 
   useEffect(() => {
-    const newArrayOfPics = galleryPics.filter((item) => item.tagId === selectedTag.id);
-    newArrayOfPics.length > 0 ? setGalleryPics(newArrayOfPics) : setGalleryPics(pictures);
+    const newArrayOfPics = pictures.filter((item) => item.tagId === selectedTag.id);
+    newArrayOfPics.length >= 1 ? setGalleryPics(newArrayOfPics) : setGalleryPics(pictures);
+  
   }, [selectedTag])
 
   const toggleFavorite = (picture) => {
