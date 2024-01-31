@@ -35,6 +35,23 @@ const GalleryContent = styled.section`
 const App = () => {
 
   const [galleryPics, setGalleryPics] = useState(pictures);
+  const [selectedPicture, setSelectedPicture] = useState(null);
+
+  const toggleFavorite = (picture) => {
+    if(picture.id === selectedPicture?.id){
+      setSelectedPicture({
+        ...selectedPicture,
+        favorite: !selectedPicture.favorite
+      })
+    }
+
+    setGalleryPics(galleryPics.map((item) => {
+      return {
+        ...item,
+        favorite: item.id === picture.id ? !item.favorite : item.favorite
+      }
+    }))
+  }
 
   return (
     <>
@@ -46,11 +63,15 @@ const App = () => {
             <AsideMenu/>
             <GalleryContent>
               <Banner/>
-              <Gallery pictures = {galleryPics}/>
+              <Gallery 
+                pictures = {galleryPics}
+                selectPicture={pic => setSelectedPicture(pic)}
+                toggleFavorite={toggleFavorite}
+              />
             </GalleryContent>
           </MainContainer>
         </AppContainer>
-        <Modal/>       
+        <Modal picture={selectedPicture} toggleFavorite={toggleFavorite} onClose={() => setSelectedPicture(null)}/>       
       </BackgroundGradient>
     </>
   )

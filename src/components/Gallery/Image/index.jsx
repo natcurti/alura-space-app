@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import favoriteIcon from "/icons/favorite-active.png";
 import expandIcon from "/icons/expand.png";
 
 const ImageContainer = styled.figure`
-    width: ${(props) => (props.$expanded ? '90%' : '22.5rem')};
+    width: ${props => props.$expanded ? '70%' : '22.5rem'};
     border-radius: 1rem;
     overflow: hidden;
     position: relative;
@@ -57,21 +56,26 @@ const ImageContainer = styled.figure`
 `
 
 
-const Image = ({title, font, path, id, tagId, expanded = "false"}) => {
+const Image = ({picture, expanded = false, onExpand, toggleFavorite}) => {
+
+    const favoriteIcon = picture.favorite ? "/icons/favorite-active.png" : "/icons/favorite.png";
+
     return (
-        <ImageContainer expanded={expanded}>
-            <img src={path} alt={title}/>
+        <ImageContainer $expanded={expanded}>
+            <img src={picture.path} alt={picture.title}/>
             <figcaption>
-                <h3>{title}</h3>
+                <h3>{picture.title}</h3>
                 <footer>
-                    <p>{font}</p>
+                    <p>{picture.font}</p>
                     <div>
-                        <button>
+                        <button onClick={() => toggleFavorite(picture)}>
                             <img src={favoriteIcon}/>
                         </button>
-                        <button>
-                            <img src={expandIcon}/>
-                        </button>
+                        {!expanded && 
+                            <button onClick={() => onExpand(picture)}>
+                                <img src={expandIcon}/>
+                            </button> 
+                        }                    
                     </div>
                 </footer>           
             </figcaption>
