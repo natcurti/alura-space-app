@@ -55,7 +55,6 @@ const ImageContainer = styled.figure`
 
 `
 
-
 const Image = ({picture, expanded = false, onExpand, toggleFavorite}) => {
 
     const favoriteIcon = picture.favorite ? "/icons/favorite-active.png" : "/icons/favorite.png";

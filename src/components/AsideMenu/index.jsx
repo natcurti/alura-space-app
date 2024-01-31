@@ -5,7 +5,7 @@ const AsideMenuStyled = styled.ul`
     list-style: none;
     padding: 0;
     margin: 0;
-    width: 212px;
+    width: 13.25rem;
 `
 
 const AsideMenu = () => {
