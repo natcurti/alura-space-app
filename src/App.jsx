@@ -7,6 +7,7 @@ import Gallery from "./components/Gallery";
 import pictures from "./pictures.json";
 import { useState } from "react";
 import Modal from "./components/Modal";
+import Footer from "./components/Footer";
 
 const BackgroundGradient = styled.div`
   background: linear-gradient(174.61deg, #041833 4.16%, #04244F 48%, #154580 96.76%);
@@ -72,6 +73,7 @@ const App = () => {
           </MainContainer>
         </AppContainer>
         <Modal picture={selectedPicture} toggleFavorite={toggleFavorite} onClose={() => setSelectedPicture(null)}/>       
+        <Footer/>
       </BackgroundGradient>
     </>
   )
