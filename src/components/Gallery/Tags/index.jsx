@@ -20,15 +20,26 @@ const TagButton = styled.button`
     font-size: 1.5rem;
     border: 2px solid ${props => props.$isActive ? '#7B78E5' : 'transparent'};
     &:hover {
-      border-color: #C98CF1;
       cursor: pointer;
     }
 `
-const Tags = ({isActive = false}) => { 
+const Tags = ({isActive, changeSelectedTag, selectedTag}) => {    
     return (
         <TagsContainer>
             <TagsTitle>Busque por tags:</TagsTitle>
-            {tags.map(tag => <TagButton key={tag.id} $isActive={isActive}>{tag.title}</TagButton>)}
+            {tags.map((tag) => {
+                selectedTag.id === tag.id ? isActive = true : isActive = false
+
+                return (
+                    <TagButton 
+                        key={tag.id} 
+                        $isActive={isActive} 
+                        onClick={() => changeSelectedTag(tag)}
+                    >
+                        {tag.title}
+                    </TagButton>
+                )
+            })}
         </TagsContainer>    
     )    
 }

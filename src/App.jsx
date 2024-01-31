@@ -5,7 +5,7 @@ import Banner from "./components/Banner";
 import AsideMenu from "./components/AsideMenu";
 import Gallery from "./components/Gallery";
 import pictures from "./pictures.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./components/Modal";
 import Footer from "./components/Footer";
 
@@ -37,6 +37,30 @@ const App = () => {
 
   const [galleryPics, setGalleryPics] = useState(pictures);
   const [selectedPicture, setSelectedPicture] = useState(null);
+  const [searchField, setSearchField] = useState('');
+  const [selectedTag, setSelectedTag] = useState({
+    "id": 0,
+    "title": "Todas"
+  });
+
+  const changeSearch = (value) => {
+    setSearchField(value);
+  }
+
+  const changeSelectedTag = (value) => {
+    setSelectedTag(value);
+  }
+
+  useEffect(() => {
+    const input = searchField.toUpperCase();
+    const newArrayOfPics = galleryPics.filter((item) => (item.title.toUpperCase()).startsWith(input));
+    searchField.length >= 1 && newArrayOfPics ? setGalleryPics(newArrayOfPics) : setGalleryPics(pictures);
+  }, [searchField])
+
+  useEffect(() => {
+    const newArrayOfPics = galleryPics.filter((item) => item.tagId === selectedTag.id);
+    newArrayOfPics.length > 0 ? setGalleryPics(newArrayOfPics) : setGalleryPics(pictures);
+  }, [selectedTag])
 
   const toggleFavorite = (picture) => {
     if(picture.id === selectedPicture?.id){
@@ -59,12 +83,14 @@ const App = () => {
       <BackgroundGradient>
         <GlobalStyle/>
         <AppContainer>
-          <Header/>
+          <Header searchField={searchField} changeSearch={changeSearch}/>
           <MainContainer>
             <AsideMenu/>
             <GalleryContent>
               <Banner/>
               <Gallery 
+                selectedTag={selectedTag}
+                changeSelectedTag={changeSelectedTag}
                 pictures = {galleryPics}
                 selectPicture={pic => setSelectedPicture(pic)}
                 toggleFavorite={toggleFavorite}

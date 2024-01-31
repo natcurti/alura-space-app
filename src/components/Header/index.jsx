@@ -10,11 +10,11 @@ const HeaderStyled = styled.header`
     }
 `
 
-const Header = () => {
+const Header = ({searchField, changeSearch}) => {
     return (
         <HeaderStyled>
             <img src="/images/logo.png" alt="Space App Logo"/>
-            <TextField/>
+            <TextField searchField={searchField} changeSearch={changeSearch}/>
         </HeaderStyled>
     )
 }

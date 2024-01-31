@@ -16,6 +16,8 @@ const InputStyled = styled.input`
     padding-left: 1rem;
     box-sizing: border-box;
     font-size: 1rem;
+    color: white;
+    font-size: 1.25rem;
 
     &::placeholder{
         color: white;
@@ -28,11 +30,11 @@ const InputIcon = styled.img`
     right: 0.85rem;
 `
 
-const TextField = () => {
+const TextField = ({searchField, changeSearch}) => {
     return (
         <>
             <InputContainer>
-                <InputStyled placeholder="O que você procura?"/>
+                <InputStyled placeholder="O que você procura?" value={searchField} onChange={(e) => changeSearch(e.target.value)}/>
                 <InputIcon src={iconSearch} alt="Ícone de Lupa"/>
             </InputContainer>            
         </>

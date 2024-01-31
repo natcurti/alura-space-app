@@ -37,10 +37,10 @@ const BtnMore = styled.button`
 `
 
 
-const Gallery = ({pictures = [], selectPicture, toggleFavorite}) => {
+const Gallery = ({pictures = [], selectPicture, toggleFavorite, changeSelectedTag, selectedTag}) => {
     return (
         <>
-        <Tags/>
+        <Tags changeSelectedTag={changeSelectedTag} selectedTag={selectedTag}/>
         <GalleryContainer>
             <SectionPictures>
                 <Title title="Navegue pela galeria"/>
