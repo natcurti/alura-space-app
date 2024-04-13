@@ -1,8 +1,33 @@
-# React + Vite
+# 🌌 Space App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Galeria de fotos do espaço.
 
-Currently, two official plugins are available:
+## 💻 Tecnologias utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Para construção desse projeto foram utilizados:
+
+- React + Vite
+- JavaScript
+- Styled Components
+
+## 🚀 Instalação
+
+Após clonar o projeto, acesse o diretório e digite o comando abaixo para instalar as dependências necessárias:
+
+```
+npm install
+```
+
+Inicie o servidor
+
+```
+npm run dev
+```
+
+## 📕 Aprendizados
+
+Aprendemos como lidar com arquivos estáticos como fontes, imagens e json na aplicação e como utilizar o Styled Components para estilizar nossa página.
+
+## 👉 Confira o projeto pelo link:
+
+https://alura-space-app-rho.vercel.app/
